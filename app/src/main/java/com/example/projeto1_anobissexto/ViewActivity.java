@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class ViewActivity extends AppCompatActivity {
-    private TextView resultado2, nome_local;
+    private TextView resultado2, nome_local, resultado3;
     private Button btCompartilhar;
     private String resultado;
 
@@ -17,6 +17,8 @@ public class ViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
+        resultado3 = (TextView) findViewById(R.id.resultado3);
 
         resultado2 = (TextView) findViewById(R.id.resultado2);
         resultado = getIntent().getStringExtra("resultado");
@@ -35,15 +37,24 @@ public class ViewActivity extends AppCompatActivity {
     }
 
     public void compartilhar(View view) {
-        String mensagem = nome_local.getText() + ", o ano " + resultado;
-        String mensagem2 = nome_local.getText() + " que o ano " + resultado;
-        resultado2.setText(mensagem);
 
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        //intent.putExtra(intent.EXTRA_SUBJECT, nome_local.getText());
-        //intent.putExtra(intent.EXTRA_TEXT, ((TextView) findViewById(R.id.idConteudo)).getText());
-        intent.setType("text/plain");
-        startActivity(Intent.createChooser(intent, "Compartilhar com " + mensagem2));
+        if (nome_local.length() <= 0) {
+            resultado3.setText("Por favor informe um nome!");
+            return;
+        } else {
+            resultado3.setText("Ok!");
+
+            String subject = "Ano Bissexto";
+            String mensagem = nome_local.getText() + ", o ano " + resultado;
+            String mensagem2 = nome_local.getText() + " que o ano " + resultado;
+            resultado2.setText(mensagem);
+
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.putExtra(intent.EXTRA_SUBJECT, subject);
+            intent.putExtra(intent.EXTRA_TEXT, mensagem);
+            intent.setType("text/plain");
+            startActivity(Intent.createChooser(intent, "Compartilhar com " + mensagem2));
+        }
     }
 }

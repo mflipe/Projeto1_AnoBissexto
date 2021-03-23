@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            resultado.setText("Por favor inserir um ano ou valor válido.");
+            resultado.setText("Por favor inserir um ano válido.");
         }
 
     }
