@@ -7,6 +7,7 @@
     tools:context=".ViewActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -58,7 +59,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="314dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,5 +82,14 @@
             </LinearLayout>
 
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/creditos2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autores:\n Marcos Felipe Soares Rocha\n Rejane de Lima e Silva\n2021"
+            android:textSize="18sp" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
